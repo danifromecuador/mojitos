@@ -72,3 +72,22 @@ export const editCocktail = async (req, res) => {
     res.end(JSON.stringify({ error: err.message }))
   }
 }
+
+// Eliminar un coctel
+export const deleteCocktail = (req, res) => {
+  const url = new URL(req.url, `http://${req.headers.host}`)
+  const id = url.pathname.split('/')[4]
+  // Buscar si el coctel a eliminar existe
+  const index = cocktails.findIndex(c => c.id === id)
+  // En caso de que no exista retorna 404
+  if (index === -1) {
+    res.writeHead(404)
+    res.end(JSON.stringify({ error: 'Coctel no encontrado' }))
+    return
+  }
+  // Eliminar el coctel basado en su index, no confundir con el id que es lo que se recibe del req
+  cocktails.splice(index, 1)
+
+  res.writeHead(200)
+  res.end(JSON.stringify({ message: 'Coctel eliminado' }))
+}

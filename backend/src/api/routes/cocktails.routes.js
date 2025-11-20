@@ -1,4 +1,10 @@
-import { getCocktails, getCocktail, createCocktail, editCocktail } from "../controllers/cocktails.controller.js"
+import {
+  getCocktails,
+  getCocktail,
+  createCocktail,
+  editCocktail,
+  deleteCocktail
+} from "../controllers/cocktails.controller.js"
 
 export const handleCocktailsRoutes = (req, res) => {
   // GET / - mensaje de bienvenida
@@ -31,6 +37,11 @@ export const handleCocktailsRoutes = (req, res) => {
   // PATCH /api/v1/cocktails/:id - editar un coctel
   else if (req.url.match(/^\/api\/v1\/cocktails\/[\w-]+$/) && req.method === 'PATCH') {
     editCocktail(req, res)
+  }
+
+  // DELETE /api/v1/cocktails/:id - eliminar un coctel
+  else if (req.url.match(/^\/api\/v1\/cocktails\/[\w-]+$/) && req.method === 'DELETE') {
+    deleteCocktail(req, res)
   }
 
   // Ruta no encontrada
