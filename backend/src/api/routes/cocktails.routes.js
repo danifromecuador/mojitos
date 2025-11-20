@@ -1,12 +1,26 @@
+import { getAllCocktails } from "../controllers/cocktails.controller.js"
+
 export const handleCocktailsRoutes = (req, res) => {
+  // GET / - mensaje de bienvenida
   if (req.url === '/' && req.method === 'GET') {
     res.writeHead(200)
-    res.end(JSON.stringify({ message: 'Server running' }))
-  } else if (req.url === '/health' && req.method === 'GET') {
+    res.end(JSON.stringify({ message: 'Servidor en ejecucion' }))
+  }
+
+  // GET /health - verificar estado del servidor
+  else if (req.url === '/health' && req.method === 'GET') {
     res.writeHead(200)
     res.end(JSON.stringify({ status: 'OK' }))
-  } else {
+  }
+
+  // GET /api/v1/cocktails - obtener todos los cocteles
+  else if (req.url === '/api/v1/cocktails' && req.method === 'GET') {
+    getAllCocktails(req, res)
+  }
+
+  // Ruta no encontrada
+  else {
     res.writeHead(404)
-    res.end(JSON.stringify({ error: 'Not Found' }))
+    res.end(JSON.stringify({ error: 'La ruta no existe' }))
   }
 }
