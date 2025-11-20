@@ -37,3 +37,27 @@ export const createCocktail = async (req, res) => {
     res.end(JSON.stringify({ error: err.message }))
   }
 }
+
+// Editar un coctel
+export const editCocktail = async (req, res) => {
+  try {
+    const url = new URL(req.url, `http://${req.headers.host}`)
+    const id = url.pathname.split('/')[4]
+    const body = await parseBody(req)
+    const index = cocktails.findIndex(c => c.id === id)
+
+    if (index === -1) {
+      res.writeHead(404)
+      res.end(JSON.stringify({ error: 'Cóctel no encontrado' }))
+      return
+    }
+
+    cocktails[index] = { ...cocktails[index], ...body }
+
+    res.writeHead(200)
+    res.end(JSON.stringify(cocktails[index]))
+  } catch (err) {
+    res.writeHead(400)
+    res.end(JSON.stringify({ error: err.message }))
+  }
+}

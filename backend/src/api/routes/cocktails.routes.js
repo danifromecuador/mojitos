@@ -1,4 +1,4 @@
-import { getCocktails, getCocktail, createCocktail } from "../controllers/cocktails.controller.js"
+import { getCocktails, getCocktail, createCocktail, editCocktail } from "../controllers/cocktails.controller.js"
 
 export const handleCocktailsRoutes = (req, res) => {
   // GET / - mensaje de bienvenida
@@ -22,9 +22,15 @@ export const handleCocktailsRoutes = (req, res) => {
   else if (req.url.match(/^\/api\/v1\/cocktails\/[\w-]+$/) && req.method === 'GET') {
     getCocktail(req, res)
   }
+
   // POST /api/v1/cocktails - crear un nuevo coctel
   else if (req.url === '/api/v1/cocktails' && req.method === 'POST') {
     createCocktail(req, res)
+  }
+
+  // PATCH /api/v1/cocktails/:id - editar un coctel
+  else if (req.url.match(/^\/api\/v1\/cocktails\/[\w-]+$/) && req.method === 'PATCH') {
+    editCocktail(req, res)
   }
 
   // Ruta no encontrada
