@@ -1,5 +1,6 @@
 import http from 'http'
 import dotenv from 'dotenv'
+import { handleCocktailsRoutes } from './api/routes/cocktails.routes.js'
 
 // Manejar variables de entorno
 dotenv.config()
@@ -8,18 +9,12 @@ dotenv.config()
 const PORT = process.env.PORT || 3000
 
 // Crear el servidor
-const server = http.createServer((request, response) => {
+const server = http.createServer((req, res) => {
   // Headers por defecto
-  response.setHeader('Content-Type', 'application/json')
+  res.setHeader('Content-Type', 'application/json')
 
-  // Rutas
-  if (request.url === '/' && request.method === 'GET') {
-    response.writeHead(200)
-    response.end(JSON.stringify({ message: 'Server running' }))
-  } else {
-    response.writeHead(404)
-    response.end(JSON.stringify({ error: 'Not Found' }))
-  }
+  // Manejo de rutas
+  handleCocktailsRoutes(req, res)
 })
 
 // Inicializar el server
