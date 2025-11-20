@@ -1,6 +1,10 @@
 import { cocktails } from '../../data/cocktails.data.js'
 import { validateCocktail } from '../models/cocktails.models.js'
-import { createCocktailWithId, parseBody } from '../utils/cocktails.utils.js'
+import {
+  createCocktailWithId,
+  parseBody,
+  cocktailFormationHandler
+} from '../utils/cocktails.utils.js'
 
 // Obtener todos los cocteles
 export const getCocktails = (_req, res) => {
@@ -10,7 +14,8 @@ export const getCocktails = (_req, res) => {
 
 // Obtener un coctel dado su id
 export const getCocktail = (req, res) => {
-  const id = req.url.split('/')[4]
+  const url = new URL(req.url, `http://${req.headers.host}`)
+  const id = url.pathname.split('/')[4]
   const cocktail = cocktails.find(c => c.id === id)
 
   if (cocktail) {
@@ -41,18 +46,24 @@ export const createCocktail = async (req, res) => {
 // Editar un coctel
 export const editCocktail = async (req, res) => {
   try {
+    // Datos del request
     const url = new URL(req.url, `http://${req.headers.host}`)
     const id = url.pathname.split('/')[4]
     const body = await parseBody(req)
+    // Buscar si el coctel a editar existe
     const index = cocktails.findIndex(c => c.id === id)
-
+    // En caso de que no exista retorna 404
     if (index === -1) {
       res.writeHead(404)
-      res.end(JSON.stringify({ error: 'Cóctel no encontrado' }))
+      res.end(JSON.stringify({ error: 'Coctel no encontrado' }))
       return
     }
-
-    cocktails[index] = { ...cocktails[index], ...body }
+    // Formar el objeto coctel con todos sus atributos o campos
+    const cocktail = cocktailFormationHandler(index, body, cocktails)
+    // Validar todos los campos del coctel
+    validateCocktail(cocktail)
+    // Reemplazar el coctel antiguo por el coctel nuevo o editado
+    cocktails[index] = { ...cocktails[index], ...cocktail }
 
     res.writeHead(200)
     res.end(JSON.stringify(cocktails[index]))

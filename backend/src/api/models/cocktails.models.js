@@ -17,4 +17,3 @@ export const validateCocktail = (cocktail) => {
     throw new Error('Ingrese un precio entre 3 y 10 USD, use solo números')
   }
 }
-
