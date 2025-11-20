@@ -10,7 +10,10 @@ export const handleCocktailsRoutes = (req, res) => {
   // GET / - mensaje de bienvenida
   if (req.url === '/' && req.method === 'GET') {
     res.writeHead(200)
-    res.end(JSON.stringify({ message: 'Servidor en ejecucion' }))
+    res.end(JSON.stringify({
+      message: 'La API Mojitos está funcionando correctamente, use el endpoint /api/v1/cocktails para listar todos los cocteles',
+      version: '1.0.0'
+    }))
   }
 
   // GET /health - verificar estado del servidor
