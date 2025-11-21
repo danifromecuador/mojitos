@@ -6,7 +6,7 @@
   align-items: center;
 }
 
-.app h1 {
+.app .app-title {
   padding: 5%;
   font-size: 50px;
 }

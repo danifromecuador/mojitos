@@ -2,7 +2,7 @@
   width: 200px;
   height: 300px;
   background-color: rgb(255, 200, 132);
-  border-radius: 20px;
+  border-radius: 15px;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -10,9 +10,9 @@
 }
 
 .cocktail-card .image-favorites {
-  height: 60%;
+  height: 90%;
   position: relative;
-  border-radius: 15px;
+  border-radius: 12px;
   overflow: hidden;
 }
 
