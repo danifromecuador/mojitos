@@ -4,6 +4,7 @@ import { handleCocktailsRoutes } from './api/routes/cocktails.routes.js'
 
 dotenv.config()
 
+// Definir el puerto
 const PORT = process.env.PORT || 5000
 
 const server = http.createServer((req, res) => {
@@ -21,6 +22,7 @@ const server = http.createServer((req, res) => {
     return
   }
 
+  // Manejo de rutas
   handleCocktailsRoutes(req, res)
 })
 
