@@ -1,7 +1,7 @@
 import { useStore } from '../store.js'
 
 export const useCocktails = () => {
-  const { cocktails, setCocktails, searchQuery, setSearchQuery } = useStore()
+  const { cocktails, setCocktails, searchQuery, setSearchQuery, favorites, addFavorite, removeFavorite, toggleFavorite } = useStore()
 
   const fetchAllCocktails = async () => {
     try {
@@ -78,5 +78,9 @@ export const useCocktails = () => {
     createCocktail,
     updateCocktail,
     deleteCocktail,
+    favorites,
+    addFavorite,
+    removeFavorite,
+    toggleFavorite
   }
 }
