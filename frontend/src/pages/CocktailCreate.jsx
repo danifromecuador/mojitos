@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useCocktails } from '../store/hooks/useCocktails'
+import { uploadImageToImgbb } from '../store/hooks/useImageUpload' // Importa la función
 import './CocktailCreate.css'
 
 export const CocktailCreate = () => {
@@ -11,10 +12,11 @@ export const CocktailCreate = () => {
     name: '',
     description: '',
     price: '',
-    image: ''
+    image: '' // Aquí se guarda la URL después de subir la imagen
   })
 
   const [loading, setLoading] = useState(false)
+  const [uploadingImage, setUploadingImage] = useState(false) // Estado para la subida de imagen
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -22,6 +24,22 @@ export const CocktailCreate = () => {
       ...prev,
       [name]: value
     }))
+  }
+
+  // Nuevo manejador para el file input que sube la imagen inmediatamente
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+    
+    setUploadingImage(true)
+    try {
+      const imageUrl = await uploadImageToImgbb(file)
+      setFormData(prev => ({ ...prev, image: imageUrl }))
+    } catch (error) {
+      alert('Error al subir la imagen: ' + error.message)
+    } finally {
+      setUploadingImage(false)
+    }
   }
 
   const handleSubmit = async (e) => {
@@ -96,19 +114,23 @@ export const CocktailCreate = () => {
           </div>
 
           <div className='form-group'>
-            <label htmlFor='image'>URL de la imagen</label>
+            <label htmlFor='imageFile'>Imagen</label>
             <input
-              type='url'
-              id='image'
-              name='image'
-              value={formData.image}
-              onChange={handleChange}
-              placeholder='https://...'
+              type='file'
+              id='imageFile'
+              name='imageFile'
+              accept='image/*'
+              onChange={handleFileChange}
+              disabled={uploadingImage}
             />
+            {uploadingImage && <p>Subiendo imagen...</p>}
+            {formData.image && !uploadingImage && (
+              <img src={formData.image} alt='Preview' style={{ maxWidth: '200px', marginTop: '10px' }} />
+            )}
           </div>
 
           <div className='form-actions'>
-            <button type='submit' className='btn-submit' disabled={loading}>
+            <button type='submit' className='btn-submit' disabled={loading || uploadingImage}>
               {loading ? 'Creando...' : 'Crear coctel'}
             </button>
             <button type='button' className='btn-cancel' onClick={() => navigate('/')}>
