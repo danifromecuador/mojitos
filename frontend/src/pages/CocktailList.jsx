@@ -12,7 +12,6 @@ export const CocktailList = () => {
 
   return (
     <div className='cocktail-list'>
-      CocktailList Component
       {cocktails.map(cocktail => (
         <CocktailCard key={cocktail.id} cocktail={cocktail} />
       ))}

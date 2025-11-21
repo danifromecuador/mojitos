@@ -11,15 +11,88 @@
 
 .cocktail-card .image-favorites {
   height: 60%;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.cocktail-card .image-favorites img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cocktail-card .image-favorites button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.cocktail-card .image-favorites button:hover {
+  background: rgb(248, 0, 0);
 }
 
 .cocktail-card .name-price {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
+}
+
+.cocktail-card .name-price h2 {
+  margin: 0;
+  font-size: 16px;
+  flex: 1;
+}
+
+.cocktail-card .name-price span {
+  font-weight: bold;
+  font-size: 14px;
+  white-space: nowrap;
 }
 
 .cocktail-card .actions {
   display: flex;
   justify-content: space-around;
+  gap: 8px;
+}
+
+.cocktail-card .actions button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.cocktail-card .actions button:first-child {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.cocktail-card .actions button:first-child:hover {
+  background-color: #ff5252;
+}
+
+.cocktail-card .actions button:last-child {
+  background-color: #4ecdc4;
+  color: white;
+}
+
+.cocktail-card .actions button:last-child:hover {
+  background-color: #45b7b0;
 }
