@@ -31,11 +31,34 @@ export const useCocktails = () => {
     }
   }
 
+  const updateCocktail = async (id, cocktailData) => {
+    try {
+      const res = await fetch(`http://localhost:5000/api/v1/cocktails/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(cocktailData)
+      })
+      if (!res.ok) throw new Error('Error updating cocktail')
+      const updatedCocktail = await res.json()
+
+      // Actualiza la store
+      const updatedCocktails = cocktails.map(c =>
+        c.id === id ? updatedCocktail : c
+      )
+      setCocktails(updatedCocktails)
+      return updatedCocktail
+    } catch (error) {
+      console.error(error)
+      throw error
+    }
+  }
+
   return {
     cocktails,
     fetchAllCocktails,
     searchQuery,
     setSearchQuery,
     createCocktail,
+    updateCocktail,
   }
 }
