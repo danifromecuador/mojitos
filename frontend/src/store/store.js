@@ -3,7 +3,7 @@ import { devtools } from 'zustand/middleware'
 
 export const Store = create(devtools((set) => ({
   bears: 0,
-  increaseBears: () => set((state) => ({ bears: state.bears + 1 })),
+  increaseBears: () => set((state) => ({ bears: state.bears + 1 }), false, 'increaseBearsByOne'),
   removeAllBears: () => set({ bears: 0 }),
   updateBears: (newBears) => set({ bears: newBears })
 })))
