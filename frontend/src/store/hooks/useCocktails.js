@@ -1,7 +1,7 @@
 import { useStore } from '../store.js'
 
 export const useCocktails = () => {
-  const { cocktails, setCocktails } = useStore()
+  const { cocktails, setCocktails, searchQuery, setSearchQuery } = useStore()
 
   const fetchAllCocktails = async () => {
     try {
@@ -14,5 +14,10 @@ export const useCocktails = () => {
     }
   }
 
-  return { cocktails, fetchAllCocktails }
+  return { 
+    cocktails,
+    fetchAllCocktails, 
+    searchQuery, 
+    setSearchQuery 
+  }
 }
