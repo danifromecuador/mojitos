@@ -1,15 +1,13 @@
-// import { Store } from './store/store'
 import { CocktailList } from './pages/CocktailList'
+import { SearchBar } from './components/SearchBar'
 import './App.css'
 
 export const App = () => {
-  // const store = Store()
 
   return (
     <div className='app'>
-      <p>Componente App</p>
-      {/* <span>{store.bears} bears around here...</span>
-      <button onClick={() => store.increaseBears()} type="button">+1</button> */}
+      <h1>Mojito's App</h1>
+      <SearchBar />
       <CocktailList />
     </div >
   )

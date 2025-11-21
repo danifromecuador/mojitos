@@ -11,9 +11,8 @@ export const CocktailList = () => {
   }, [])
 
   return (
-    <div className='CocktailList'>
+    <div className='cocktail-list'>
       CocktailList Component
-      <SearchBar />
       {cocktails.map(cocktail => (
         <CocktailCard key={cocktail.id} cocktail={cocktail} />
       ))}

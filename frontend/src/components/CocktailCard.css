@@ -1,0 +1,25 @@
+.cocktail-card {
+  width: 200px;
+  height: 300px;
+  background-color: rgb(255, 200, 132);
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cocktail-card .image-favorites {
+  height: 60%;
+}
+
+.cocktail-card .name-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cocktail-card .actions {
+  display: flex;
+  justify-content: space-around;
+}
