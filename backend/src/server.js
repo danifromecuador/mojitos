@@ -6,7 +6,7 @@ import { handleCocktailsRoutes } from './api/routes/cocktails.routes.js'
 dotenv.config()
 
 // Definir el puerto
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 5000
 
 // Crear el servidor
 const server = http.createServer((req, res) => {
@@ -15,6 +15,15 @@ const server = http.createServer((req, res) => {
 
   // CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+
+  // Manejar preflight OPTIONS
+  if (req.method === 'OPTIONS') {
+    res.writeHead(200)
+    res.end()
+    return
+  }
 
   // Manejo de rutas
   handleCocktailsRoutes(req, res)
