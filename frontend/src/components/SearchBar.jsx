@@ -17,7 +17,6 @@ export const SearchBar = () => {
         value={searchQuery}
         onChange={handleSearch}
       />
-      <button type="button">Buscar</button>
     </div>
   )
 }

@@ -10,7 +10,7 @@ export const CocktailDetail = () => {
   const cocktail = cocktails.find(c => c.id === id)
 
   if (!cocktail) {
-    return <div className='cocktail-detail'>Cóctel no encontrado</div>
+    return <div className='cocktail-detail'>Coctel no encontrado</div>
   }
 
   return (
