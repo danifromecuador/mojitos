@@ -18,7 +18,7 @@ export const CocktailDetail = () => {
   })
 
   if (!cocktail) {
-    return <div className='cocktail-detail'>Cóctel no encontrado</div>
+    return <div className='cocktail-detail'>Coctel no encontrado</div>
   }
 
   const handleChange = (e) => {
@@ -38,28 +38,28 @@ export const CocktailDetail = () => {
         price: parseFloat(formData.price)
       })
       setIsEditing(false)
-      alert('Cóctel actualizado exitosamente')
+      alert('Coctel actualizado exitosamente')
     } catch (error) {
-      console.error('Error actualizando cóctel:', error)
-      alert('Error al actualizar el cóctel')
+      console.error('Error actualizando coctel:', error)
+      alert('Error al actualizar el coctel')
     } finally {
       setLoading(false)
     }
   }
 
   const handleDelete = async () => {
-    if (!window.confirm('¿Estás seguro de que quieres eliminar este cóctel?')) {
+    if (!window.confirm('¿Estás seguro de que quieres eliminar este coctel?')) {
       return
     }
 
     setLoading(true)
     try {
       await deleteCocktail(id)
-      alert('Cóctel eliminado exitosamente')
+      alert('Coctel eliminado exitosamente')
       navigate('/')
     } catch (error) {
-      console.error('Error eliminando cóctel:', error)
-      alert('Error al eliminar el cóctel')
+      console.error('Error eliminando coctel:', error)
+      alert('Error al eliminar el coctel')
     } finally {
       setLoading(false)
     }

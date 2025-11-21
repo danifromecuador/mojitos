@@ -30,7 +30,7 @@ export const CocktailList = () => {
       <div className='cocktail-list'>
         {displayedCocktails.length === 0 ? (
           <div className='no-results'>
-            <p>No se encontraron cócteles</p>
+            <p>No se encontraron cocteles</p>
             {searchQuery && <p className='search-hint'>Intenta con otro término de búsqueda</p>}
           </div>
         ) : (

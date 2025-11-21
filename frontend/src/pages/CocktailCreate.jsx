@@ -40,8 +40,8 @@ export const CocktailCreate = () => {
       })
       navigate('/')
     } catch (error) {
-      console.error('Error creando cóctel:', error)
-      alert('Error al crear el cóctel')
+      console.error('Error creando coctel:', error)
+      alert('Error al crear el coctel')
     } finally {
       setLoading(false)
     }
@@ -54,11 +54,11 @@ export const CocktailCreate = () => {
       </button>
 
       <div className='form-container'>
-        <h1>Crear nuevo cóctel</h1>
+        <h1>Crear nuevo coctel</h1>
 
         <form onSubmit={handleSubmit} className='cocktail-form'>
           <div className='form-group'>
-            <label htmlFor='name'>Nombre del cóctel</label>
+            <label htmlFor='name'>Nombre del coctel</label>
             <input
               type='text'
               id='name'
@@ -76,13 +76,13 @@ export const CocktailCreate = () => {
               name='description'
               value={formData.description}
               onChange={handleChange}
-              placeholder='Describe el cóctel...'
+              placeholder='Describe el coctel...'
               rows='4'
             />
           </div>
 
           <div className='form-group'>
-            <label htmlFor='price'>Precio</label>
+            <label htmlFor='price'>Precio (entre 3 y 10)</label>
             <input
               type='number'
               id='price'
@@ -109,7 +109,7 @@ export const CocktailCreate = () => {
 
           <div className='form-actions'>
             <button type='submit' className='btn-submit' disabled={loading}>
-              {loading ? 'Creando...' : 'Crear cóctel'}
+              {loading ? 'Creando...' : 'Crear coctel'}
             </button>
             <button type='button' className='btn-cancel' onClick={() => navigate('/')}>
               Cancelar
