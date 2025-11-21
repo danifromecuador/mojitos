@@ -9,13 +9,14 @@ export const CocktailList = () => {
   useEffect(() => {
     fetchAllCocktails()
   }, [])
-  console.log(cocktails)
-  
+
   return (
     <div className='CocktailList'>
       CocktailList Component
       <SearchBar />
-      
+      {cocktails.map(cocktail => (
+        <CocktailCard key={cocktail.id} cocktail={cocktail} />
+      ))}
     </div>
   )
 }
