@@ -6,7 +6,7 @@ import './CocktailDetail.css'
 export const CocktailDetail = () => {
   const { id } = useParams()
   const navigate = useNavigate()
-  const { cocktails, updateCocktail } = useCocktails()
+  const { cocktails, updateCocktail, deleteCocktail } = useCocktails()
 
   const cocktail = cocktails.find(c => c.id === id)
   const [isEditing, setIsEditing] = useState(false)
@@ -42,6 +42,24 @@ export const CocktailDetail = () => {
     } catch (error) {
       console.error('Error actualizando cóctel:', error)
       alert('Error al actualizar el cóctel')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleDelete = async () => {
+    if (!window.confirm('¿Estás seguro de que quieres eliminar este cóctel?')) {
+      return
+    }
+
+    setLoading(true)
+    try {
+      await deleteCocktail(id)
+      alert('Cóctel eliminado exitosamente')
+      navigate('/')
+    } catch (error) {
+      console.error('Error eliminando cóctel:', error)
+      alert('Error al eliminar el cóctel')
     } finally {
       setLoading(false)
     }
@@ -120,7 +138,9 @@ export const CocktailDetail = () => {
                 <button className='btn-edit' onClick={() => setIsEditing(true)}>
                   Editar
                 </button>
-                <button className='btn-delete'>Eliminar</button>
+                <button className='btn-delete' onClick={handleDelete} disabled={loading}>
+                  {loading ? 'Eliminando...' : 'Eliminar'}
+                </button>
               </div>
             </>
           )}

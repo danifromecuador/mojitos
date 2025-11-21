@@ -53,6 +53,23 @@ export const useCocktails = () => {
     }
   }
 
+  const deleteCocktail = async (id) => {
+    try {
+      const res = await fetch(`http://localhost:5000/api/v1/cocktails/${id}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+      })
+      if (!res.ok) throw new Error('Error deleting cocktail')
+
+      const updatedCocktails = cocktails.filter(c => c.id !== id)
+      setCocktails(updatedCocktails)
+      return true
+    } catch (error) {
+      console.error(error)
+      throw error
+    }
+  }
+
   return {
     cocktails,
     fetchAllCocktails,
@@ -60,5 +77,6 @@ export const useCocktails = () => {
     setSearchQuery,
     createCocktail,
     updateCocktail,
+    deleteCocktail,
   }
 }
