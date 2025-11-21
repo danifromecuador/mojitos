@@ -7,6 +7,13 @@ import {
 } from "../controllers/cocktails.controller.js"
 
 export const handleCocktailsRoutes = (req, res) => {
+  // Manejar preflight OPTIONS para todas las rutas
+  if (req.method === 'OPTIONS') {
+    res.writeHead(200)
+    res.end()
+    return
+  }
+
   // GET / - mensaje de bienvenida
   if (req.url === '/' && req.method === 'GET') {
     res.writeHead(200)
