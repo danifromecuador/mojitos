@@ -1,14 +1,19 @@
-import { Store } from './store/store'
+import { Routes, Route } from 'react-router-dom'
+import { CocktailList } from './pages/CocktailList'
+import { CocktailDetail } from './pages/CocktailDetail'
+import { SearchBar } from './components/SearchBar'
 import './App.css'
 
 export const App = () => {
-  const store = Store()
-
   return (
     <div className='app'>
-      <p>Componente App</p>
-      <span>{store.bears} bears around here...</span>
-      <button onClick={() => store.increaseBears()} type="button">+1</button>
-    </div >
+      <h1 className='app-title'>Mojito's App</h1>
+      <SearchBar />
+      
+      <Routes>
+        <Route path="/" element={<CocktailList />} />
+        <Route path="/cocktail/:id" element={<CocktailDetail />} />
+      </Routes>
+    </div>
   )
 }

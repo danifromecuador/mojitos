@@ -1,0 +1,11 @@
+.searchbar {
+  width: 100%;
+  padding: 5%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.searchbar .searchbar-input {
+  width: 70%;
+  padding: 1%;
+}

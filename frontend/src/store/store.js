@@ -1,9 +1,11 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
-export const Store = create(devtools((set) => ({
-  bears: 0,
-  increaseBears: () => set((state) => ({ bears: state.bears + 1 }), false, 'increaseBearsByOne'),
-  removeAllBears: () => set({ bears: 0 }),
-  updateBears: (newBears) => set({ bears: newBears })
+export const useStore = create(devtools((set) => ({
+  // Array de cocteles que se llena cuando se inicia la App o cuando se actualiza la vista
+  cocktails: [],
+  setCocktails: (cocktails) => set({ cocktails }, false, 'cocktails/set'),
+  // Función para búsqueda dinámica de cocteles
+  searchQuery: '',
+  setSearchQuery: (query) => set({ searchQuery: query }, false, 'search/setQuery')
 })))
