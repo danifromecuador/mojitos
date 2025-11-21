@@ -8,7 +8,6 @@
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
-  /* para indicar clickeable */
 }
 
 .image-favorites {
@@ -107,4 +106,16 @@
 
 .actions button:last-child:hover {
   background-color: #45b7b0;
+}
+
+.image-favorites button:hover,
+.detail-image .favorite-btn:hover {
+  background: linear-gradient(135deg, #ff3b3b, #d50000);
+  color: white;
+}
+
+.image-favorites button.fav-active,
+.detail-image .favorite-btn.fav-active {
+  background: #e60000;
+  color: white;
 }
