@@ -13,6 +13,9 @@ const server = http.createServer((req, res) => {
   // Headers por defecto
   res.setHeader('Content-Type', 'application/json')
 
+  // CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*')
+
   // Manejo de rutas
   handleCocktailsRoutes(req, res)
 })
