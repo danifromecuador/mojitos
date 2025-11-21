@@ -55,17 +55,21 @@ Este proyecto es una aplicación de cócteles desarrollada como monorepo con dos
 Para correr el backend y frontend localmente:
 
 1. Clona el repositorio.
-2. Instala dependencias y levanta backend:
+```
+git clone git@github.com:danifromecuador/mojitos.git
+```
+2. En una terminal, instala dependencias y levanta backend:
 
 ```
-cd backend
+cd mojitos/backend
 npm install
 npm start
 ```
 
-3. Instala dependencias y levanta frontend:
+3. Abre otra terminal, instala dependencias y levanta frontend:
 
 ```
+cd ..
 cd frontend
 npm install
 npm run dev
