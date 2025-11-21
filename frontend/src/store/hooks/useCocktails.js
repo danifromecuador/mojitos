@@ -14,10 +14,28 @@ export const useCocktails = () => {
     }
   }
 
-  return { 
+  const createCocktail = async (cocktailData) => {
+    try {
+      const res = await fetch('http://localhost:5000/api/v1/cocktails', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(cocktailData)
+      })
+      if (!res.ok) throw new Error('Error creating cocktail')
+      const newCocktail = await res.json()
+      setCocktails([...cocktails, newCocktail])
+      return newCocktail
+    } catch (error) {
+      console.error(error)
+      throw error
+    }
+  }
+
+  return {
     cocktails,
-    fetchAllCocktails, 
-    searchQuery, 
-    setSearchQuery 
+    fetchAllCocktails,
+    searchQuery,
+    setSearchQuery,
+    createCocktail,
   }
 }

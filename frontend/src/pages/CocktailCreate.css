@@ -1,0 +1,116 @@
+.cocktail-create {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.cocktail-create .back-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px 16px;
+  margin-bottom: 20px;
+  color: #4ecdc4;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.cocktail-create .back-btn:hover {
+  color: #45b7b0;
+}
+
+.form-container {
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+}
+
+.form-container h1 {
+  margin: 0 0 25px 0;
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+}
+
+.cocktail-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #4ecdc4;
+  box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.form-actions button {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.form-actions .btn-submit {
+  background-color: #4ecdc4;
+  color: white;
+}
+
+.form-actions .btn-submit:hover:not(:disabled) {
+  background-color: #45b7b0;
+}
+
+.form-actions .btn-submit:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-actions .btn-cancel {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.form-actions .btn-cancel:hover {
+  background-color: #e0e0e0;
+}
