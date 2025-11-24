@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useCocktails } from '../store/hooks/useCocktails'
 import './CocktailDetail.css'
@@ -6,19 +6,32 @@ import './CocktailDetail.css'
 export const CocktailDetail = () => {
   const { id } = useParams()
   const navigate = useNavigate()
-  const { cocktails, updateCocktail, deleteCocktail, favorites, toggleFavorite } = useCocktails()
+  const { cocktails, fetchAllCocktails, updateCocktail, deleteCocktail, favorites, toggleFavorite } = useCocktails()
 
-  const cocktail = cocktails.find(c => c.id === id)
+  const cocktail = cocktails.find(c => String(c.id) === String(id))
   const [isEditing, setIsEditing] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
+
   const [formData, setFormData] = useState({
     name: cocktail?.name || '',
     description: cocktail?.description || '',
     price: cocktail?.price || ''
   })
 
+  useEffect(() => {
+    if (cocktails.length === 0) {
+      fetchAllCocktails().then(() => setLoading(false))
+    } else {
+      setLoading(false)
+    }
+  }, [])
+
   if (!cocktail) {
     return <div className='cocktail-detail'>Coctel no encontrado</div>
+  }
+
+  if (loading) {
+    return <div className='coctail-detail'>Cargando...</div>
   }
 
   const isFav = favorites.includes(cocktail.id)
