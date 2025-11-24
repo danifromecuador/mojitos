@@ -81,8 +81,8 @@ export const CocktailDetail = () => {
       <div className='detail-container'>
         <div className='detail-image'>
           <img src={cocktail.image} alt={cocktail.name} />
-          <button 
-            className={`favorite-btn ${isFav ? 'fav-active' : 'fav-inactive'}`} 
+          <button
+            className={`favorite-btn ${isFav ? 'fav-active' : 'fav-inactive'}`}
             onClick={handleFavoriteClick}
             aria-label={isFav ? 'Quitar favorito' : 'Agregar a favoritos'}
           >
@@ -93,7 +93,49 @@ export const CocktailDetail = () => {
         <div className='detail-info'>
           {isEditing ? (
             <form onSubmit={handleUpdate} className='edit-form'>
-              {/* formulario como tienes */}
+              <div className='form-group'>
+                <label htmlFor='name'>Nombre</label>
+                <input
+                  type='text'
+                  id='name'
+                  name='name'
+                  value={formData.name}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className='form-group'>
+                <label htmlFor='description'>Descripción</label>
+                <textarea
+                  id='description'
+                  name='description'
+                  value={formData.description}
+                  onChange={handleChange}
+                  rows='4'
+                />
+              </div>
+
+              <div className='form-group'>
+                <label htmlFor='price'>Precio</label>
+                <input
+                  type='number'
+                  id='price'
+                  name='price'
+                  value={formData.price}
+                  onChange={handleChange}
+                  step='0.01'
+                  min='0'
+                />
+              </div>
+
+              <div className='form-actions'>
+                <button type='submit' className='btn-save' disabled={loading}>
+                  {loading ? 'Guardando...' : 'Guardar'}
+                </button>
+                <button type='button' className='btn-cancel' onClick={() => setIsEditing(false)}>
+                  Cancelar
+                </button>
+              </div>
             </form>
           ) : (
             <>
