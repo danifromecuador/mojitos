@@ -1,14 +1,15 @@
-# Prueba Técnica de Cocteles Monorepo
+# Mojito's Bar APP 
 
 ## 📗 Tabla de Contenidos
 
+- [⚠️ Aclaración](#aclaración)
 - [📖 Sobre el Proyecto](#sobre-el-proyecto)
   - [🛠 Tecnologías Utilizadas](#tecnologías-utilizadas)
-    - [Stack Tecnológico](#stack-tecnológico)
-    - [Características Principales](#características-principales)
-    - [Recursos](#recursos)
-- [💻 Comenzando](#comenzando)
-  - [Configuración](#configuración)
+  - [Stack Tecnológico](#stack-tecnológico)
+  - [Características Principales](#características-principales)
+  - [Recursos](#recursos)
+- [💻 Live Link](#live-link)
+- [⚙️ Configuración](#configuración)
 - [👥 Autor](#autor)
 - [🔭 Funcionalidades Futuras](#funcionalidades-futuras)
 - [🤝 Contribuciones](#contribuciones)
@@ -18,39 +19,49 @@
 
 ## Aclaración
 - NO he usado base de datos para guardar los cocteles o los usuarios, el backend contiene solo la API REST.
-- Sí se pueden cargar imágenes, pero se hace uso de la API del servicio [imgBB](https://imgbb.com/) para almacenar las imágenes.
+- Sí se pueden cargar imágenes, pero se hace uso de la API del servicio [imgBB](https://imgbb.com/) para almacenar los archivos.
+- Si bien no estaba en los requerimientos del challenge, quise desplegar la app en AWS.
 
 ## Sobre el Proyecto
 
-Este proyecto es una aplicación de cócteles desarrollada como monorepo con dos directorios principales: **backend** y **frontend**.
+Este proyecto es una aplicación de cocteles desarrollada como monorepo con dos directorios principales: **backend** y **frontend**.
+
+En esta app, el usuario puede:
+- Ver la lista de todos los cocteles
+- Ver el detalle de un solo coctel
+- Buscar un coctel por su nombre
+- Crear un coctel, con imágenes locales de su equipo
+- Editar un coctel existente
+- Eliminar un coctel
 
 ### Tecnologías Utilizadas
 
-#### Stack Tecnológico
+### Stack Tecnológico
 
-- Backend: Node.js versión 18 (API REST para gestión de cócteles)
-- Frontend: React con Vite 6 (Interfaz de usuario moderna y reactiva), para el manejo de estados globales he usado [Zustand](https://zustand.docs.pmnd.rs/)
+- Backend: Node.js versión 18 (API REST para gestión de cocteles)
+- Frontend: React con Vite 6 (No se usó Vite 7 por temas de compatibilidad con Node 18), para el manejo de estados globales he usado [Zustand](https://zustand.docs.pmnd.rs/)
 - Almacenamiento Favoritos: almacenamiento local (localStorage)
 - Almacenamiento de Imágenes: API de [imgBB](https://imgbb.com/)
+- Despliegue: AWS EC2 & Docker
 
-#### Características Principales
+### Características Principales
 
-- API para listar, crear, editar y borrar cócteles con fotos.
+- API para listar, crear, editar y borrar cocteles con fotos.
 - Las fotos se guardan en la API de imgBB
-- Pantallas para listar, buscar, ver detalles y editar cócteles.
-- Formularios para agregar y modificar cócteles.
+- Pantallas para listar, buscar, ver detalles y editar cocteles.
+- Formularios para agregar y modificar cocteles.
 - Manejo de favoritos y persistencia en localStorage.
 - Documentación de API con Postman.
+- Despliege en AWS EC2 mono-AZ, con 2 containers Docker nginx para frontend y backend
 
-#### Recursos
+### Recursos
 
-- [Documentación en Postman de la API backend](https://www.postman.com/supply-architect-46643137/public-workspace/documentation/hrp88dk/mojitos)
-- API de [imgBB](https://imgbb.com/) para subir y guardar las imágenes
-- Postman para publicar la documentación de la API backend
+- [Documentación de la API backend](https://www.postman.com/supply-architect-46643137/public-workspace/documentation/hrp88dk/mojitos)
 
-## Comenzando
+## Live Link <a name="live-link"></a>
+<a href="http://18.219.40.70/">Mojito's BAR en AWS</a>
 
-### Configuración
+## Configuración
 
 Para correr el backend y frontend localmente:
 
@@ -58,7 +69,7 @@ Para correr el backend y frontend localmente:
 ```
 git clone git@github.com:danifromecuador/mojitos.git
 ```
-2. En una terminal, instala dependencias y levanta backend:
+2. Abre una terminal, instala dependencias y levanta backend:
 
 ```
 cd mojitos/backend
@@ -74,6 +85,10 @@ cd frontend
 npm install
 npm run dev
 ```
+
+4. Abre la página http://localhost:5173/
+en tu navegador favorito
+5. Crea tus mejores cocteles!
 
 ## Autor
 
