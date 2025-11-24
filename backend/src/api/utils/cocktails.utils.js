@@ -1,6 +1,6 @@
 import crypto from 'crypto'
 
-// Crear coctel con UUID
+// Crear coctel con crypto
 export const createCocktailWithId = (body) => {
   const newCocktail = {
     id: crypto.randomUUID(),

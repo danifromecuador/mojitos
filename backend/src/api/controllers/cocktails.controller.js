@@ -43,7 +43,7 @@ export const createCocktail = async (req, res) => {
   }
 }
 
-// Editar un coctel
+// Editar un coctel dado su id
 export const editCocktail = async (req, res) => {
   try {
     // Datos del request
@@ -77,7 +77,7 @@ export const editCocktail = async (req, res) => {
 export const deleteCocktail = (req, res) => {
   const url = new URL(req.url, `http://${req.headers.host}`)
   const id = url.pathname.split('/')[4]
-  // Buscar si el coctel a eliminar existe
+  // Buscar si el coctel a eliminar existe dado su id
   const index = cocktails.findIndex(c => c.id === id)
   // En caso de que no exista retorna 404
   if (index === -1) {
